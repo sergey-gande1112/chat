@@ -440,7 +440,7 @@
                         <i class="fas fa-shopping-bag"></i>
                     </div>
                     <h3>Kasha Shop</h3>
-                    <a href="https://t.me/Kasha_Store_bot" class="bot-btn">
+                    <a href="https://t.me/Kasha_Store_bot" class="bot-btn" target="_blank">
                         <i class="fab fa-telegram"></i> Открыть бота
                     </a>
                 </div>
@@ -451,7 +451,7 @@
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <h3>Rabotadatel Shop</h3>
-                    <a href="https://t.me/rabotadatelstore_bot" class="bot-btn">
+                    <a href="https://t.me/rabotadatelstore_bot" class="bot-btn" target="_blank">
                         <i class="fab fa-telegram"></i> Открыть бота
                     </a>
                 </div>
@@ -462,7 +462,7 @@
                         <i class="fas fa-umbrella-beach"></i>
                     </div>
                     <h3>Островок</h3>
-                    <a href="https://t.me/OstrovokRobot" class="bot-btn">
+                    <a href="https://t.me/OstrovokRobot" class="bot-btn" target="_blank">
                         <i class="fab fa-telegram"></i> Открыть бота
                     </a>
                 </div>
@@ -473,7 +473,7 @@
                         <i class="fas fa-paw"></i>
                     </div>
                     <h3>БирШоп</h3>
-                    <a href="https://t.me/BearBuyBot" class="bot-btn">
+                    <a href="https://t.me/BearBuyBot" class="bot-btn" target="_blank">
                         <i class="fab fa-telegram"></i> Открыть бота
                     </a>
                 </div>
@@ -533,12 +533,13 @@
             setTimeout(() => notification.classList.remove('show'), 3000);
         }
 
-        // Копирование ссылок при клике на карточку
+        // Копирование ссылок при клике на карточку (кроме кнопки)
         document.querySelectorAll('.bot-card').forEach(card => {
             const link = card.querySelector('a').href;
             
             card.addEventListener('click', function(e) {
-                if (e.target.tagName !== 'A' && e.target.tagName !== 'I') {
+                // Если клик не по кнопке и не по иконке внутри кнопки
+                if (!e.target.closest('.bot-btn')) {
                     navigator.clipboard.writeText(link).then(() => {
                         showNotification('Ссылка скопирована в буфер!', 'success');
                     }).catch(() => {
